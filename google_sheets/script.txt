@@ -1,0 +1,86 @@
+// create a button
+function onOpen() {
+  var ui = SpreadsheetApp.getUi();
+  ui.createMenu('Score Clients')
+    .addItem('Get Scores', 'PredictAll')
+    .addToUi();
+}
+
+host_production = 'insurance-ranking-clients.herokuapp.com'
+
+// get a predict
+function ApiCall(data, endpoint){
+  var url = 'https://' + host_production + endpoint;
+  var payload = JSON.stringify(data);
+
+  var options = {'method': 'POST', 'contentType': 'application/json', 'payload':payload}
+
+  // request
+  var response = UrlFetchApp.fetch(url, options);
+
+  // response
+  var rc = response.getResponseCode();
+  var responseText = response.getContentText();
+
+  if (rc !== 200){
+      Logger.log('Response (%s) %s', rc, responseText);
+  }
+  else{
+    prediction = JSON.parse(responseText);
+
+    return prediction
+  }
+  
+  return None
+}
+
+function AutoSort(ss){
+    const ws = ss.getSheetByName('Ranking')
+    const range = ws.getRange(2,1, ws.getLastRow() -1, 12)
+
+    range.sort({column: 12, ascending:false});
+}
+
+
+
+function PredictAll(){
+  var ss = SpreadsheetApp.getActiveSpreadsheet();
+  var titleColumns = ss.getRange('A1:K1').getValues()[0];
+  var lastRow = ss.getLastRow()
+
+  var data = ss.getRange('A2' + ':' + 'K' + lastRow).getValues();
+
+  // run over all rows
+  for (row in data){
+    var dic_row = new Object();
+    
+    for (var j=0; j < titleColumns.length; j++){
+      dic_row[titleColumns[j]] = data[row][j];
+    };
+    var json_send = new Object();
+    // List of dics
+    json_send['id'] = dic_row['id']
+    json_send['gender'] = dic_row['gender']
+    json_send['age'] = dic_row['age']
+    json_send['driving_license'] = dic_row['driving_license']
+    json_send['region_code'] = dic_row['region_code']
+    json_send['previously_insured'] = dic_row['previously_insured']
+    json_send['vehicle_age'] = dic_row['vehicle_age']
+    json_send['vehicle_damage'] = dic_row['vehicle_damage']
+    json_send['annual_premium'] = dic_row['annual_premium']
+    json_send['policy_sales_channel'] = dic_row['policy_sales_channel']
+    json_send['vintage'] = dic_row['vintage']
+    
+    
+    
+    
+    rank = ApiCall(json_send, '/insurance/clients/rank');
+
+    // filling score column
+    Logger.log(Number(row)+2)
+    ss.getRange('L'+ (Number(row)+2)).setValue(rank[0]['score'])
+  };
+  AutoSort(ss)
+ };
+
+

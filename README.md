@@ -1,6 +1,6 @@
 # Health Insurance Cross Sell
 
-![image](https://user-images.githubusercontent.com/64989931/164603023-1f82f225-cb8a-452d-86cf-2b7d4981c8dd.png)
+![image](https://user-images.githubusercontent.com/64989931/164603908-81c192b7-0e45-4133-96fe-5f298aeb3371.png)
 
 # 1. Business Problem.
 A Insurance All é uma empresa que fornece seguro de saúde para seus clientes e o time de produtos está analisando a possibilidade de oferecer aos assegurados, um novo produto: Um seguro de automóveis.

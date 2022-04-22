@@ -1,6 +1,6 @@
 # Health Insurance Cross Sell
 
-## IMAGEM
+![image](https://user-images.githubusercontent.com/64989931/164603023-1f82f225-cb8a-452d-86cf-2b7d4981c8dd.png)
 
 # 1. Business Problem.
 A Insurance All é uma empresa que fornece seguro de saúde para seus clientes e o time de produtos está analisando a possibilidade de oferecer aos assegurados, um novo produto: Um seguro de automóveis.
@@ -23,7 +23,7 @@ Os dados para esse problema estão disponíveis no <a href="https://www.kaggle.c
   - O custo de envio por cliente será de 100.
 
 # 3. Solution Strategy  
-Nesse tópico serão listados os passos seguidos para encontrar a solução, sempre com foco em entregar valor o mais rápido possível e de forma cíclica. A abordagem do problema não seguirá o modelo de classificação tradicional tentando classificar em interessado, e sim tentando gerar um score de propensão de compra para rankear os clientes, permitindo assim otimizar a lista de contatos enviadas para o setor comercial.
+Nesse tópico serão listados os passos seguidos para encontrar a solução, sempre com foco em entregar valor o mais rápido possível e de forma cíclica. A abordagem do problema não seguirá o modelo de classificação tradicional tentando classificar em interessado, e sim gerando um score de propensão de compra para rankear os clientes, e permitir otimizar a ordenação da lista de contatos enviadas para o setor comercial.
 
 Veja o notebook completo em: <a href="https://nbviewer.org/github/miguelzph/health_insurance_cross_sell/blob/main/notebooks/sprint03_health_insurance_cross_sell.ipynb" title="Clique e acesse agora!" target="_blank">Link no nbviewer</a>
 

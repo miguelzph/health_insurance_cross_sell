@@ -20,7 +20,7 @@ Os dados para esse problema estão disponíveis no <a href="https://www.kaggle.c
 - Para a simulação final do resultado de negócio:
   - Um cliente interessado têm 50% chance de realmente comprar o seguro.
   - Cada cliente vai pagar 2000 unidades monetárias no seguro de automóveis.
-  - O custo de envio por cliente será de 100.
+  - O custo para entrar em contato com o cliente será de 100.
 
 # 3. Solution Strategy  
 Nesse tópico serão listados os passos seguidos para encontrar a solução, sempre com foco em entregar valor o mais rápido possível e de forma cíclica. A abordagem do problema não seguirá o modelo de classificação tradicional tentando classificar em interessado, e sim gerando um score de propensão de compra para rankear os clientes, e permitir otimizar a ordenação da lista de contatos enviadas para o setor comercial.
@@ -54,7 +54,7 @@ E a análise primária das variáveis categóricas textuais:
 ### Step 02. Feature Engineering 
 Nesse passo as features disponíveis foram avaliadas:
 
-  ![image](https://user-images.githubusercontent.com/64989931/164575385-2a287d5f-38e2-4a30-9f87-07b23d690b95.png)
+![image](https://user-images.githubusercontent.com/64989931/164575385-2a287d5f-38e2-4a30-9f87-07b23d690b95.png)
 
 Para a criação das seguintes hipóteses:
 - Hipóteses Usuários:
@@ -171,6 +171,7 @@ Já avaliando os dados de teste o resultado foi:
 ![image](https://user-images.githubusercontent.com/64989931/164582672-1ace1068-6f25-443a-bcf0-99d57a120d7d.png)
 
 O resultado do modelo final é muito interessante, chegando a ser mais de 3x melhor do que um modelo aleatório seria.
+
 ![image](https://user-images.githubusercontent.com/64989931/164583045-47c2b558-8aa5-4647-b8f4-824884dfb831.png)
 
 Esse ganho também pode ser observado com a curva de ganho, já que ordenando os usuários de acordo com o modelo final, é possível selecionar quase 100% dos interessados, ao escolher 50% da base de teste.
@@ -201,6 +202,7 @@ Assumindo:
 Dentro desse cenário, ao contactar 42.17% (32142 clientes) da base de testes é possível obter um ganho financeiro de $5,565,500.00.
 
 ### Consumo da API via Google Sheets:
+A solução para requisitar a previsão de propensão também foi estabelecida em uma planilha do google sheets:
 
 ![ezgif com-gif-maker (1)](https://user-images.githubusercontent.com/64989931/164595494-498ec23f-e43a-4c0b-85e4-511e9d599d7f.gif)
 
